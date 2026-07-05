@@ -3,12 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>मेरी पहली वेबसाइट</title>
+    <title>AR Coaching Result Portal</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f7f6; padding: 20px; margin: 0; }
+        .container { background: white; padding: 20px; border-radius: 10px; max-width: 450px; margin: auto; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); border: 2px solid #002060; }
+        h2 { color: #002060; margin-bottom: 5px; font-size: 24px; }
+        .tagline { font-style: italic; color: #555; margin-top: 0; font-size: 14px; }
+        input { width: 80%; padding: 12px; margin: 15px 0; border: 2px solid #002060; border-radius: 5px; font-size: 18px; text-align: center; font-weight: bold; box-sizing: border-box; }
+        .result-box { margin-top: 20px; padding: 15px; border-radius: 5px; font-size: 16px; line-height: 1.6; background-color: #e2f0d9; color: #385723; border: 1px solid #385723; text-align: left; }
+    </style>
 </head>
 <body>
 
-    <h1>नमस्ते गुरु जी! आपकी वेबसाइट लाइव होने वाली है।</h1>
-    <p>यह मेरी पहली वेबसाइट है जिसे मैं खुद कोड करके बना रहा हूँ।</p>
+<div class="container">
+    <h2>🏆 AR कोचिंग सेंटर 🏆</h2>
+    <p class="tagline">सफलता का मार्ग, आपके साथ</p>
+    <p style="font-size: 15px; color: #333;">नीचे BOX में छात्र का रोल नंबर (जैसे: <b>104</b>) लिखें:</p>
+    
+    <input type="text" id="rollInput" oninput="checkResult()" placeholder="यहाँ रोल नंबर लिखें...">
+
+    <div class="result-box">
+        <div id="result" style="text-align: center;">नंबर लिखते ही यहाँ डिजिटल प्रमाण-पत्र दिखेगा...</div>
+    </div>
+</div>
+
+<script>
+function checkResult() {
+    var roll = document.getElementById("rollInput").value.trim();
+    var resultDiv = document.getElementById("result");
+    
+    var students = {
+        "101": "<b>छात्र:</b> अमित कुमार <br> <b>विषय:</b> Biology <br> <b>नंबर:</b> 95/100 <br> <b>स्टेटस:</b> PASS 🎉",
+        "102": "<b>छात्र:</b> राहुल सिंह <br> <b>विषय:</b> Biology <br> <b>नंबर:</b> 88/100 <br> <b>स्टेटस:</b> PASS 🎉",
+        "104": "<b>🏅 योग्यता प्रमाण-पत्र 🏅</b><br><div style='border-top:1px dashed #385723; margin:5px 0;'></div><b>छात्र का नाम:</b> रामू कुमार <br><b>परीक्षा:</b> मुख्य परीक्षा (AR कोचिंग) <br><b>विषय:</b> हिंदी, English, गणित, GK, Science <br><b>कुल प्राप्त अंक:</b> 75/100 <br><b>सत्यापन:</b> VERIFIED By Atesh Sir ✔️"
+    };
+
+    if (roll === "") {
+        resultDiv.style.textAlign = "center";
+        resultDiv.innerHTML = "नंबर लिखते ही यहाँ डिजिटल प्रमाण-पत्र दिखेगा...";
+    } else if (students[roll]) {
+        resultDiv.style.textAlign = "left";
+        resultDiv.innerHTML = students[roll];
+    } else {
+        resultDiv.style.textAlign = "center";
+        resultDiv.innerHTML = "<span style='color:red; font-weight:bold;'>गलत रोल नंबर! दोबारा चेक करें।</span>";
+    }
+}
+</script>
 
 </body>
 </html>
